@@ -1,0 +1,32 @@
+html,
+body{
+    margin: auto;
+    max-width: 100vw;
+}
+.header{
+    border: 1px solid black;
+    height: 210px;
+}
+.search-container{
+    display: flex;
+    justify-content: center;
+    height: 38px;
+}
+.search-input{
+    border: none;
+    width: 340px;
+    border-radius: 5px 0px 0px 5px;
+    box-shadow: 0 0 2px black;
+}
+.search-btn{
+    border: none;
+    width: 120px;
+    border-radius: 0px 5px 5px 0px;
+    box-shadow: 0 0 2px black;
+}
+.search-btn:hover{
+    cursor: pointer;
+}
+.search-btn:active{
+    transform: scale(0.97);
+}
