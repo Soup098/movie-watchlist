@@ -1,8 +1,11 @@
 html,
 body{
+    font-family: "Inter", sans-serif;
     margin: auto;
     max-width: 100vw;
 }
+
+/*HEADER STYLES*/
 .header{
     /* border: 3px solid black; */
     max-height: 260px;
@@ -14,12 +17,14 @@ body{
     
 }
 
+/*MAIN ELEMENT STYLES*/
 main{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/*SEARCH INPUT STYLES*/
 .search-container{
     display: flex;
     justify-content: center;
@@ -44,38 +49,39 @@ main{
 .search-btn:active{
     transform: scale(0.97);
 }
+
+/*MOVIE CARD STYLES*/
 .movie-card-container{
     display: flex;
     flex-direction: column;
 }
 .movie-card{
-    /* border: 1px solid black; */
     display: flex;
     justify-content: center;
     width: 560px;
 }
 .movie-poster{
-    /* border: 1px solid black; */
     height: 196px;
     width: 140x;
     margin-right: 1.5rem;
 }
 .movie-info{
-    /* border: 1px solid black; */
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 .movie-title-rating{
-    /* border: 1px solid black; */
     width: 100%;
     display: flex;
 }
 .movie-title{
-    /* border: 1px solid black; */
     margin-right: 15px;
 }
 .runtime-genre-watchlist{
     display: flex;
     justify-content: space-between;
+}
+hr{
+    width: 100%;
+    margin-top: 20px;
 }

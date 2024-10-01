@@ -27,6 +27,7 @@ searchBtn.addEventListener("click", () => {
                     </div>
                     <br>
                 </div>
+                <hr>
 
             `
         })
