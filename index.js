@@ -6,16 +6,16 @@
 const searchInput = document.getElementById("search-input")
 const searchBtn = document.getElementById("search-btn")
 const movieCardContainer = document.getElementById("movie-card-container")
-movieSearches = 0
-movieList = []
-watchList = []
+
+let movieSearches = 0 // movie search incrementor 
+let movieList = [] // array to store searched movies as objects
+let watchList = JSON.parse(localStorage.getItem("watchlist")) || [] //check local storage to see if watchlist already exists. otherwise initiate as empty string.
 
 //event listener for the search button that calls the API to receive movie data.
 searchBtn.addEventListener("click", () => {
     fetch(`http://www.omdbapi.com/?t=${searchInput.value}&apikey=44f84d4e`)
         .then(response => response.json())
         .then(movie => {
-            console.log(movie)
             const newMovie = { // create a new movie object to add to the movieList array
                 poster: movie.Poster,
                 title: movie.Title,
@@ -23,10 +23,8 @@ searchBtn.addEventListener("click", () => {
                 runtime: movie.Runtime,
                 genre: movie.Genre,
                 plot: movie.Plot,
-                ID: movie.imdbID,
             }
             movieList.push(newMovie)
-            console.log(movieList)
             renderMovie() // use the renderMovie() function to render the searched movie to the DOM
             movieSearches++ //increment the movie searches count by 1 (Used later in the code)
         })
@@ -45,9 +43,7 @@ function renderMovie(){
                         <div class="runtime-genre-watchlist">
                             <p>${movieList[movieSearches].runtime}</p>
                             <p>${movieList[movieSearches].genre}</p>
-                            <button class="watchlist-btn movie-poster="${[movieSearches].poster}" movie-title="${movieList[movieSearches].title}" 
-                            movie-imdbRating="${movieList[movieSearches].imdbRating}" movie-runtime="${movieList[movieSearches].runtime}" 
-                            movie-genre="${movieList[movieSearches].genre}" movie-plot="${movieList[movieSearches].plot}">+ Watchlist</button>
+                            <button class="watchlist-button" data-title="${movieList[movieSearches].title}">+ Watchlist</button>
                         </div>
                         <p>${movieList[movieSearches].plot}</p>
                     </div>
@@ -57,15 +53,20 @@ function renderMovie(){
             `  
 }
 
-// function to add movie to the watchlist using the add movie button
-// function addToWatchList(){
-//     document.getElementById(${movieList})
-// }
+// event listener to give functionality to rendered add to watchlist button
+movieCardContainer.addEventListener("click", function(e){
+    for(movie of movieList){
+        if(e.target.dataset.title === movie.title){
+            const onWatchlist = watchList.some(item => item.title === movie.title)
+            if(!onWatchlist){
+                watchList.push(movie)
+                localStorage.setItem("watchlist", JSON.stringify(watchList))
+                alert(`${movie.title} added to watch list`)
+            }else{
+                alert(`${movie.title} already on watchlist`)
+            }
+        }
+    } 
+})
 
 
-
-/*TODO
-change the JS so that the movie info is saved to an object called movieDetails, then pull the info
-from movieDetails to the movieCardContainer.innerHTML using a loop. This will make it easier to delete a movie card from the list.
-
-*/
