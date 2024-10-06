@@ -13,7 +13,7 @@ let watchList = JSON.parse(localStorage.getItem("watchlist")) || [] //check loca
 
 //event listener for the search button that calls the API to receive movie data.
 searchBtn.addEventListener("click", () => {
-    fetch(`http://www.omdbapi.com/?t=${searchInput.value}&apikey=44f84d4e`)
+    fetch(`https://www.omdbapi.com/?t=${searchInput.value}&apikey=44f84d4e`)
         .then(response => response.json())
         .then(movie => {
             const newMovie = { // create a new movie object to add to the movieList array
