@@ -28,6 +28,7 @@ body{
 .hero-title{
     font-size: 3rem;
     color: whitesmoke;
+    text-shadow: 0 0 2px black;
 }
 .hero-button{
     background: none;
@@ -35,6 +36,10 @@ body{
     color: whitesmoke;
     font-size: 1rem;
     font-weight: 600;
+    text-shadow: 0 0 2px black;
+}
+.hero-button:hover{
+    cursor: pointer;
 }
 
 
@@ -74,12 +79,19 @@ main{
 }
 
 /*MOVIE CARD STYLES*/
-.movie-card-container{
+.movie-card-container,
+.movie-card,
+.movie-info,
+.movie-title-rating,
+.runtime-genre-watchlist{
     display: flex;
+}
+
+.movie-card-container{
     flex-direction: column;
+    margin-top: 310px;
 }
 .movie-card{
-    display: flex;
     justify-content: center;
     width: 560px;
 }
@@ -90,18 +102,15 @@ main{
 }
 .movie-info{
     width: 100%;
-    display: flex;
     flex-direction: column;
 }
 .movie-title-rating{
     width: 100%;
-    display: flex;
 }
 .movie-title{
     margin-right: 15px;
 }
 .runtime-genre-watchlist{
-    display: flex;
     justify-content: space-between;
 }
 hr{
@@ -113,3 +122,4 @@ hr{
 .watchlist-container{
     margin-top: 310px;
 }
+
